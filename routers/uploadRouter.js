@@ -6,7 +6,7 @@ const uploadRouter = express.Router();
 
 const storage = multer.diskStorage({
 	destination(req, file, cb) {
-		cb(null, 'bazzarey-frontend/public/images/');
+		cb(null, 'https://epridim-frontend.herokuapp.com/public/images/');
 	},
 	filename(req, file, cb) {
 		cb(null, `${Date.now()}.jpg`);
