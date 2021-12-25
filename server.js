@@ -9,6 +9,7 @@ import orderRouter from './routers/orderRouter.js';
 import uploadRouter from './routers/uploadRouter.js';
 import categoryRouter from './routers/categoryRouter.js';
 import subcategoryRouter from './routers/subcategoryRouter.js';
+import dashboardRouter from './routers/dashboardRouter.js';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 });
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
+app.use('/api/dashboard', dashboardRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/category', categoryRouter);
