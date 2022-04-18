@@ -36,7 +36,7 @@ subCategoryRouter.post(
 subCategoryRouter.get(
 	'/get-subcategories',
 	expressAsyncHandler(async (req, res) => {
-		const subcategories = await SubCategoryModel.find({})
+		const subcategories = await SubCategoryModel.find({}).sort({ _id: -1 })
 		res.send(subcategories);
 	})
 );

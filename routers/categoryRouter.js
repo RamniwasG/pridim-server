@@ -32,7 +32,7 @@ categoryRouter.post(
 categoryRouter.get(
 	'/get-categories',
 	expressAsyncHandler(async (req, res) => {
-		const categories = await Category.find({})
+		const categories = await Category.find({}).sort({ _id: -1 })
 		res.send(categories);
 	})
 );

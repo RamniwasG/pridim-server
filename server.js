@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import morgan from 'morgan';
 import dotenv from 'dotenv';
 import path from 'path';
 import productRouter from './routers/productRouter.js';
@@ -14,6 +15,7 @@ import dashboardRouter from './routers/dashboardRouter.js';
 dotenv.config();
 
 const app = express();
+app.use(morgan('dev'))
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  // useCreateIndex: true,
+  useCreateIndex: true,
 });
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
