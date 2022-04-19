@@ -63,7 +63,7 @@ categoryRouter.put(
 		if (category) {
 			category.name = req.body.name;
 			const updatedCategory = await category.save();
-			res.send({ message: 'Category updated successfully!', category: updatedCategory });
+			res.send({ msg: 'Category updated successfully!', category: updatedCategory });
 		} else {
 			res.status(404).send({ message: 'Category Not Found' });
 		}
