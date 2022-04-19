@@ -2,21 +2,24 @@ import multer from 'multer';
 import express from 'express';
 import { isAuth } from '../utils.js';
 
-const uploadRouter = express.Router();
+const storagePath = '../epridim-frontend/public/'
 
 const storage = multer.diskStorage({
 	destination(req, file, cb) {
-		cb(null, '../epridim-frontend/public/images/');
+		cb(null, storagePath + 'images/');
 	},
 	filename(req, file, cb) {
 		cb(null, `${Date.now()}.jpg`);
 	},
 });
 
+const uploadRouter = express.Router();
 const upload = multer({ storage });
 
 uploadRouter.post('/', isAuth, upload.single('image'), (req, res) => {
-	res.send(`/${req.file.path}`);
+	var fileUploadUrl = req.file.path
+	fileUploadUrl = fileUploadUrl.replace(storagePath, '')
+	res.send(`/${fileUploadUrl}`);
 });
 
 export default uploadRouter;
