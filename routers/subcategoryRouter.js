@@ -2,6 +2,7 @@ import express from 'express'
 import expressAsyncHandler from 'express-async-handler';
 import SubCategoryModel from '../models/subCategoryModel.js'
 import Category from '../models/categoryModel.js'
+import { isAdmin, isAuth, isSellerOrAdmin } from '../utils.js';
 
 const subCategoryRouter = express.Router();
 
@@ -38,6 +39,21 @@ subCategoryRouter.get(
 	expressAsyncHandler(async (req, res) => {
 		const subcategories = await SubCategoryModel.find({}).sort({ _id: -1 })
 		res.send(subcategories);
+	})
+);
+
+subCategoryRouter.delete(
+	'/delete_subcategory/:id',
+	isAuth,
+	isAdmin,
+	expressAsyncHandler(async (req, res) => {
+		const subcategory = await SubCategoryModel.findById(req.params.id)
+		if (subcategory) {
+			const deletesubCategory = await subcategory.remove();
+			res.send({ message: 'SubCategory deleted successfully!', subcategory: deletesubCategory });
+		} else {
+			res.status(404).send({ message: 'SubCategory Not Found' });
+		}
 	})
 );
 
