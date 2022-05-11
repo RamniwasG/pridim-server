@@ -103,11 +103,10 @@ userRouter.get(
 );
 
 userRouter.put(
-	'/profile',
+	'/update-seller',
 	isAuth,
 	expressAsyncHandler(async (req, res) => {
 		const user = await User.findById(req.user._id);
-		console.log("body ", req.body)
 		if (user) {
 			user.name = req.body.name || user.name;
 			user.email = req.body.email || user.email;
