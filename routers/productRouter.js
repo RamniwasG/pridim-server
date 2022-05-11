@@ -14,6 +14,7 @@ productRouter.get(
 		const page = Number(req.query.pageNumber) || 1;
 		const name = req.query.name || '';
 		const category = req.query.category || '';
+		const subcategory = req.query.subcategory || '';
 		const seller = req.query.seller || '';
 		const order = req.query.order || '';
 		const min =
@@ -28,6 +29,7 @@ productRouter.get(
 		const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
 		const sellerFilter = seller ? { seller } : {};
 		const categoryFilter = category ? { category } : {};
+		const subCategoryFilter = subcategory ? { subcategory } : {};
 		const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
 		const ratingFilter = rating ? { rating: { $gte: rating } } : {};
 		const sortOrder =
@@ -42,6 +44,7 @@ productRouter.get(
 			...sellerFilter,
 			...nameFilter,
 			...categoryFilter,
+			...subCategoryFilter,
 			...priceFilter,
 			...ratingFilter,
 		});
@@ -49,6 +52,7 @@ productRouter.get(
 			...sellerFilter,
 			...nameFilter,
 			...categoryFilter,
+			...subCategoryFilter,
 			...priceFilter,
 			...ratingFilter,
 		})
