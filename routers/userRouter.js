@@ -132,6 +132,18 @@ userRouter.put(
 	})
 );
 
+userRouter.put(
+	'/update-seller/:id',
+	isAuth,
+	expressAsyncHandler(async (req, res) => {
+		const resp = await User.findByIdAndUpdate({ _id: req.params.id }, {
+			$set: { ...req.body }
+		}, { new: true, useFindAndModify: false });
+		console.log("result ", resp)
+		res.send({ result: resp, msg: 'Seller updated successfully!' });
+	})
+);
+
 userRouter.get(
 	'/',
 	isAuth,
