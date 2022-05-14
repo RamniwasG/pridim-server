@@ -1,12 +1,16 @@
 import multer from 'multer';
+import dotenv from 'dotenv';
 import express from 'express';
 import { isAuth } from '../utils.js';
 
-const storagePath = '../epridim-frontend/public/'
+dotenv.config();
+
+const devStoragePath = '../epridim-frontend/public/'
+// const prodStoragePath = '../https://epridim-frontend.herokuapp.com/public/'
 
 const storage = multer.diskStorage({
 	destination(req, file, cb) {
-		cb(null, storagePath + 'images/');
+		cb(null, devStoragePath + 'images/');
 	},
 	filename(req, file, cb) {
 		cb(null, `${Date.now()}.jpg`);
