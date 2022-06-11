@@ -17,14 +17,14 @@ const data = {
 	  },
 	},
 	{
-	  name: 'Seller',
-	  email: 'seller@example.com',
+	  name: 'Pridim seller 1',
+	  email: 'seller1@pridim.com',
 	  password: bcrypt.hashSync('1234', 8),
 	  isAdmin: false,
 	  isSeller: true,
 	  seller: {
 		name: 'Puma',
-		logo: '/images/logo1.png',
+		logo: '/images/puma_seller.png',
 		description: 'best seller',
 		rating: 4.5,
 		numReviews: 120,

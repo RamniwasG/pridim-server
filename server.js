@@ -11,6 +11,7 @@ import uploadRouter from './routers/uploadRouter.js';
 import categoryRouter from './routers/categoryRouter.js';
 import subcategoryRouter from './routers/subcategoryRouter.js';
 import dashboardRouter from './routers/dashboardRouter.js';
+import stripeRouter from './routers/stripeRouter.js';
 
 dotenv.config();
 
@@ -32,6 +33,8 @@ app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/category', categoryRouter);
 app.use('/api/subcategory', subcategoryRouter);
+app.use('/api/stripe', stripeRouter);
+
 app.get('/api/config/paypal', (req, res) => {
   res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
 });
