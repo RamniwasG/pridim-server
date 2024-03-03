@@ -18,13 +18,15 @@ dashboardRouter.get(
 		const topSellersCount = await User.find({ isSeller: true, isAdmin: false }).count()
 		const customersCount = await User.find({ isAdmin: false, isSeller: false }).count()
 		const ordersCount = await Order.find({}).count()
+		const database = { name: process.env.DB_NAME };
 		const resp = {
 			categoriesCount,
 			subCategoriesCount,
 			productsCount,
 			topSellersCount,
 			customersCount,
-			ordersCount
+			ordersCount,
+			database
 		}
 		res.send(resp);
 	})
