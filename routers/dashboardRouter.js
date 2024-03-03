@@ -5,6 +5,7 @@ import Product from '../models/productModel.js';
 import User from '../models/userModel.js';
 import Category from '../models/categoryModel.js';
 import SubCategory from '../models/subCategoryModel.js';
+import Order from '../models/orderModel.js';
 
 const dashboardRouter = express.Router();
 
@@ -16,12 +17,14 @@ dashboardRouter.get(
 		const productsCount = await Product.find({}).count();
 		const topSellersCount = await User.find({ isSeller: true, isAdmin: false }).count()
 		const customersCount = await User.find({ isAdmin: false, isSeller: false }).count()
+		const ordersCount = await Order.find({}).count()
 		const resp = {
 			categoriesCount,
 			subCategoriesCount,
 			productsCount,
 			topSellersCount,
-			customersCount
+			customersCount,
+			ordersCount
 		}
 		res.send(resp);
 	})
