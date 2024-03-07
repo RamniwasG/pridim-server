@@ -1,7 +1,7 @@
 import express from 'express'
 import expressAsyncHandler from 'express-async-handler';
-import SubCategoryModel from '../models/subCategoryModel.js'
-import Category from '../models/categoryModel.js'
+import SubCategoryModel from '../new_models/SubCategoryModel.js'
+import Category from '../new_models/CategoryModel.js'
 import { isAdmin, isAuth, isSellerOrAdmin } from '../utils.js';
 
 const subCategoryRouter = express.Router();

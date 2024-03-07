@@ -1,11 +1,11 @@
 
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
-import Product from '../models/productModel.js';
-import User from '../models/userModel.js';
-import Category from '../models/categoryModel.js';
-import SubCategory from '../models/subCategoryModel.js';
-import Order from '../models/orderModel.js';
+import Product from '../new_models/ProductModel.js';
+import User from '../new_models/UserModel.js';
+import Category from '../new_models/CategoryModel.js';
+import SubCategory from '../new_models/SubCategoryModel.js';
+import Order from '../new_models/OrderModel.js';
 
 const dashboardRouter = express.Router();
 
