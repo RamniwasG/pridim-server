@@ -31,6 +31,7 @@ mongoose.connect(process.env.MONGODB_CLOUD_URL, {
   console.error('Error connecting to MongoDB:', error);
 });
 ;
+app.get('/', (req, res) => console.log("App is running."));
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/dashboard', dashboardRouter);
