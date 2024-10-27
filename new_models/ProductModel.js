@@ -13,18 +13,18 @@ const ReviewSchema = new mongoose.Schema(
 
 const ProductDetailSchema = new mongoose.Schema(
 	{
-		materialType: { type: String, required: false },
-		sleeveType: { type: String, required: false },
-		length: { type: String, required: false },
-		neckStyle: { type: String, required: false },
-		style: { type: String, required: false },
-		countryOfOrigin: { type: String, required: false }
+		materialType: { type: String },
+		sleeveType: { type: String },
+		length: { type: String },
+		neckStyle: { type: String },
+		style: { type: String },
+		countryOfOrigin: { type: String }
 	}
 );
 
 const AboutProductSchema = mongoose.Schema(
 	{
-		type: String, required: false
+		type: String
 	}
 )
 
@@ -35,9 +35,9 @@ const ProductSchema = new mongoose.Schema(
 		brand: { type: String, required: true },
 		category: { type: String, required: true },
 		subcategory: { type: String, required: true },
-		details: { type: ProductDetailSchema, required: false },
-		about: { type: [AboutProductSchema], required: false },
-		additionalInformation: { type: [AboutProductSchema], required: false },
+		details: { type: ProductDetailSchema },
+		about: { type: [AboutProductSchema] },
+		additionalInformation: { type: [AboutProductSchema] },
 		colors: [{ type: String, required: true }],
 		size: [{ type: String, required: true }],
 		availableInLocations: [{ type: String, required: true }],

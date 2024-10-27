@@ -19,9 +19,9 @@ const UserSchema = new mongoose.Schema(
 		name: { type: String, required: true },
 		email: { type: String, required: true, unique: true },
 		password: { type: String, required: true },
-        phone: { type: String, required: false },
-		isAdmin: { type: Boolean, default: false, required: false },
-		isSeller: { type: Boolean, default: false, required: false },
+        phone: { type: String },
+		isAdmin: { type: Boolean, default: false },
+		isSeller: { type: Boolean, default: false },
 		seller: { type: SellerSchema, require: false },
 	},
 	{
