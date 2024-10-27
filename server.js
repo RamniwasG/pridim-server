@@ -23,8 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 mongoose.connect(process.env.MONGODB_CLOUD_URL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
+  useUnifiedTopology: true
 }).then(() => {
   console.log('Connected to MongoDB');
 })
