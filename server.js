@@ -21,15 +21,15 @@ app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// mongoose.connect(process.env.MONGODB_CLOUD_URL, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// }).then(() => {
-//   console.log('Connected to MongoDB');
-// })
-// .catch((error) => {
-//   console.error('Error connecting to MongoDB:', error);
-// });
+mongoose.connect(process.env.MONGODB_CLOUD_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch((error) => {
+  console.error('Error connecting to MongoDB:', error);
+});
 ;
 app.get('/apis', (req, res) => res.send({msg: "App is running."}));
 // app.use('/api/uploads', uploadRouter);
@@ -37,7 +37,7 @@ app.get('/apis', (req, res) => res.send({msg: "App is running."}));
 // app.use('/api/dashboard', dashboardRouter);
 // app.use('/api/products', productRouter);
 // app.use('/api/orders', orderRouter);
-// app.use('/api/category', categoryRouter);
+app.use('/api/category', categoryRouter);
 // app.use('/api/subcategory', subcategoryRouter);
 // app.use('/api/stripe', stripeRouter);
 
