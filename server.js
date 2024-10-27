@@ -31,7 +31,7 @@ mongoose.connect(process.env.MONGODB_CLOUD_URL, {
   console.error('Error connecting to MongoDB:', error);
 });
 ;
-app.get('/', (req, res) => console.log("App is running."));
+app.get('/api', (req, res) => console.log("App is running."));
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/dashboard', dashboardRouter);
@@ -60,5 +60,5 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`Serve at ${port}`);
+  console.log(`Server running at ${port}`);
 });
