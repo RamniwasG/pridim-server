@@ -25,7 +25,13 @@ mongoose.connect(process.env.MONGODB_CLOUD_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
+}).then(() => {
+  console.log('Connected to MongoDB');
+})
+.catch((error) => {
+  console.error('Error connecting to MongoDB:', error);
 });
+;
 app.use('/api/uploads', uploadRouter);
 app.use('/api/users', userRouter);
 app.use('/api/dashboard', dashboardRouter);

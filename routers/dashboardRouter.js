@@ -12,12 +12,12 @@ const dashboardRouter = express.Router();
 dashboardRouter.get(
 	'/getData',
 	expressAsyncHandler(async (req, res) => {
-		const categoriesCount = await Category.find({}).count();
-		const subCategoriesCount = await SubCategory.find({}).count();
-		const productsCount = await Product.find({}).count();
-		const topSellersCount = await User.find({ isSeller: true, isAdmin: false }).count()
-		const customersCount = await User.find({ isAdmin: false, isSeller: false }).count()
-		const ordersCount = await Order.find({}).count()
+		const categoriesCount = await Category.find({}).countDocuments();
+		const subCategoriesCount = await SubCategory.find({}).countDocuments();
+		const productsCount = await Product.find({}).countDocuments();
+		const topSellersCount = await User.find({ isSeller: true, isAdmin: false }).countDocuments()
+		const customersCount = await User.find({ isAdmin: false, isSeller: false }).countDocuments()
+		const ordersCount = await Order.find({}).countDocuments()
 		const database = { name: process.env.DB_NAME };
 		const resp = {
 			categoriesCount,
