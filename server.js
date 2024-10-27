@@ -32,14 +32,14 @@ mongoose.connect(process.env.MONGODB_CLOUD_URL, {
 });
 ;
 app.get('/apis', (req, res) => res.send({msg: "App is running."}));
-// app.use('/api/uploads', uploadRouter);
-// app.use('/api/users', userRouter);
-// app.use('/api/dashboard', dashboardRouter);
-// app.use('/api/products', productRouter);
-// app.use('/api/orders', orderRouter);
+app.use('/api/uploads', uploadRouter);
+app.use('/api/users', userRouter);
+app.use('/api/dashboard', dashboardRouter);
+app.use('/api/products', productRouter);
+app.use('/api/orders', orderRouter);
 app.use('/api/category', categoryRouter);
-// app.use('/api/subcategory', subcategoryRouter);
-// app.use('/api/stripe', stripeRouter);
+app.use('/api/subcategory', subcategoryRouter);
+app.use('/api/stripe', stripeRouter);
 
 // app.get('/api/config/paypal', (req, res) => {
 //   res.send(process.env.PAYPAL_CLIENT_ID || 'sb');
@@ -47,8 +47,8 @@ app.use('/api/category', categoryRouter);
 // app.get('/api/config/google', (req, res) => {
 //   res.send(process.env.GOOGLE_API_KEY || '');
 // });
-// const __dirname = path.resolve();
-// app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 // app.use(express.static(path.join(__dirname, '/new-bazzarey/build')));
 // app.get('*', (req, res) =>
 //   res.sendFile(path.join(__dirname, '/new-bazzarey/build/index.html'))
