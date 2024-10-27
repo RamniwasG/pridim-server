@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 //   console.error('Error connecting to MongoDB:', error);
 // });
 ;
-app.get('/', (req, res) => res.send({msg: "App is running."}));
+app.get('/apis', (req, res) => res.send({msg: "App is running."}));
 // app.use('/api/uploads', uploadRouter);
 // app.use('/api/users', userRouter);
 // app.use('/api/dashboard', dashboardRouter);
